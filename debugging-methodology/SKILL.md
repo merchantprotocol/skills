@@ -83,7 +83,7 @@ Always document:
 - **Solution**: How it was fixed
 - **Prevention**: How to prevent recurrence
 
-For Sulla system debugging, create GitHub issues for bugs found and update the PRD with test results.
+For system-level bugs, create GitHub issues for tracking and update relevant project documentation with test results.
 
 ## Quick Reference: Low-Hanging Fruit
 

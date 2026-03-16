@@ -74,15 +74,15 @@ Call github_create_issue_comment:
 
 ```
 1. github_create_issue(
-     owner: "sulla-ai",
-     repo: "sulla-desktop",
+     owner: "my-org",
+     repo: "my-project",
      title: "Bug: File write tools fail validation",
-     body: "fs_write_file and create_skill cannot receive content parameter. See diagnostics in #123.",
+     body: "fs_write_file cannot receive content parameter. See diagnostics in #123.",
      labels: ["bug", "tools", "high-priority"]
    )
 2. github_create_issue_comment(
-     owner: "sulla-ai",
-     repo: "sulla-desktop",
+     owner: "my-org",
+     repo: "my-project",
      issue_number: <returned issue number>,
      body: "Workaround confirmed: use exec with heredoc syntax for file writes."
    )

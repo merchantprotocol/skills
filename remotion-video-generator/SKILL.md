@@ -32,16 +32,15 @@ Create professional motion graphics videos programmatically with React and Remot
 
 Remotion Studio runs as a **Docker extension** managed by Sulla Desktop.
 
-- **Extension slug:** `docker.io/sulla-ai/remotion`
-- **Install version:** `docker.io/sulla-ai/remotion:2026.02`
-- **Container name:** `sulla_remotion_studio`
+- **Extension slug:** `remotion` (check your extension catalog for the exact image)
+- **Container name:** `remotion_studio`
 - **Port:** `30310` (maps to 3000 inside the container)
 - **Studio URL:** `http://localhost:30310`
 - **Host bind mounts (under `~/sulla/remotion/`):**
   - `~/sulla/remotion/projects` → `/app/projects` inside container
   - `~/sulla/remotion/output` → `/app/out` inside container
 
-Because these are **bind mounts** to the host filesystem, the agent writes project files directly to `~/sulla/remotion/projects/<video-name>/` using `fs_write_file` and `fs_mkdir`. The container sees the changes immediately. Only operations that need the container's Node.js runtime (npm install, rendering) use `docker exec`.
+Because these are **bind mounts** to the host filesystem, the agent writes project files directly to `~/sulla/remotion/projects/<video-name>/` using `fs_write_file` and `fs_mkdir`. The container sees the changes immediately. Only operations that need the container's Node.js runtime (npm install, rendering) use `docker exec remotion_studio`.
 
 ---
 
@@ -49,17 +48,17 @@ Because these are **bind mounts** to the host filesystem, the agent writes proje
 
 | Step | Tool | Notes |
 |------|------|-------|
-| Check if Remotion is installed | `list_installed_extensions` | Look for `sulla-ai/remotion` in the list |
-| Install Remotion extension | `install_extension` | `id: "docker.io/sulla-ai/remotion:2026.02"` |
+| Check if Remotion is installed | `list_installed_extensions` | Look for `remotion` in the list |
+| Install Remotion extension | `install_extension` | Use the Remotion extension image from your catalog |
 | Create project PRD | `create_project` | Creates the project folder + PROJECT.md. Pass `project_dir` to place it under `~/sulla/remotion/projects/<video-name>` |
 | Create video project directories | `fs_mkdir` | Create `~/sulla/remotion/projects/<video-name>/src/scenes`, `public/images/brand`, etc. |
 | Write source files | `fs_write_file` | Write directly to `~/sulla/remotion/projects/<video-name>/src/Root.tsx` etc. |
 | Read source files | `fs_read_file` | Read from `~/sulla/remotion/projects/<video-name>/...` |
-| Install npm packages | `exec` | `docker exec sulla_remotion_studio sh -c 'cd /app/projects/<video-name> && npm install'` |
+| Install npm packages | `exec` | `docker exec remotion_studio sh -c 'cd /app/projects/<video-name> && npm install'` |
 | Research brand data | `search_web` / `read_url_content` | Search for the brand, then read the product page to extract colors, logos, copy, etc. |
 | Download brand assets | `exec` | curl to download images into `~/sulla/remotion/projects/<video-name>/public/images/brand/` |
 | Show preview to user | `manage_active_asset` | Opens Remotion Studio at `http://localhost:30310` |
-| Render final video | `exec` | `docker exec sulla_remotion_studio sh -c 'cd /app/projects/<video-name> && npx remotion render ...'` |
+| Render final video | `exec` | `docker exec remotion_studio sh -c 'cd /app/projects/<video-name> && npx remotion render ...'` |
 
 ---
 
@@ -69,9 +68,9 @@ Because these are **bind mounts** to the host filesystem, the agent writes proje
 ```
 list_installed_extensions({})
 ```
-Look for `sulla-ai/remotion` in the results. If not found:
+Look for `remotion` in the results. If not found:
 ```
-install_extension({ id: "docker.io/sulla-ai/remotion:2026.02" })
+install_extension({ id: "<remotion-extension-image>" })
 ```
 
 ### 2. Create the project
@@ -127,7 +126,7 @@ Create these files:
 ### 6. Install dependencies (inside the container)
 ```
 exec({
-  command: "docker exec sulla_remotion_studio sh -c 'cd /app/projects/<video-name> && npm install'",
+  command: "docker exec remotion_studio sh -c 'cd /app/projects/<video-name> && npm install'",
   timeout: 120000
 })
 ```
@@ -158,7 +157,7 @@ User previews in Studio, requests changes. Edit source files with `fs_write_file
 ### 10. Render (only when user explicitly asks to export)
 ```
 exec({
-  command: "docker exec sulla_remotion_studio sh -c 'cd /app/projects/<video-name> && npx remotion render <CompositionName> /app/out/<video-name>.mp4'",
+  command: "docker exec remotion_studio sh -c 'cd /app/projects/<video-name> && npx remotion render <CompositionName> /app/out/<video-name>.mp4'",
   timeout: 300000
 })
 ```

@@ -1,0 +1,19 @@
+# OS files
+.DS_Store
+
+# Private skills - not for public distribution
+facebook-ads/
+lead-generation/
+marketing-plan/
+n8n-webhook-trigger-workflows/
+n8n-workflow-automations/
+new-software-development-project/
+sales-development-outreach/
+test-skill-validation/
+topic-research-sop/
+transformative-narrative-sop/
+listicle-narrative-sop/
+formatting-readability-sop/
+seo-single-post-sop/
+wordpress-operations-sop/
+trigger-daily-learning/
