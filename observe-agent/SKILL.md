@@ -17,6 +17,30 @@ Every observation must cite specific conversation moments. No self-congratulatio
 
 ---
 
+## How to Access Past Conversations
+
+The agent observer MUST read actual past conversation data. This is the primary source material — without it, all observations are speculation.
+
+**Sources to examine (in order of priority):**
+1. **Conversation thread history** — use the conversation/thread tools to read recent agent-human conversations
+2. **Daily observation logs** — `~/sulla/daily-logs/YYYY-MM-DD/observations.md` contains observations captured during conversations
+3. **Agent channel logs** — check for any stored conversation logs in the agent's working directories
+4. **Tool transcripts** — examine what tools were called, what succeeded, what failed
+
+**How many conversations to analyze:**
+- **Initial run (no agent identity file exists at `~/sulla/identity/agent.md`):** This is the first time we're observing ourselves. Read ALL available past conversations — every single one. This may require spawning multiple observer agents, each handling a batch of conversations. Split by date range if needed (e.g., one agent per day of history). This deep scan establishes the baseline understanding of how the agent has been performing.
+- **Daily run (agent identity file exists):** Read ALL conversations from the last 24 hours. If fewer than 3, also include the previous day. Focus on what changed since the last observation.
+
+**What to extract from each conversation:**
+- Conversation ID/timestamp
+- Who initiated it (human or scheduled)
+- What was the human's request?
+- What did the agent do?
+- How did it end? (completed, abandoned, blocked, ongoing)
+- Any direct feedback from the human
+
+---
+
 ## Observation Topics
 
 ### Topic: Goal Implementation

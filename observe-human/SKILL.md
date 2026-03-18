@@ -84,6 +84,28 @@ Focus on:
 - Time constraints and availability patterns
 - Major life events in progress or on the horizon (moves, transitions, milestones)
 
+### Topic: Documents and Files
+
+Observe the human's documents folder and project files to understand who they are, what they're working on, and what matters to them. This may require multiple agents to cover the full scope.
+
+Focus on:
+- **Documents folder** (`~/Documents/`) — scan all top-level folders and files. What categories exist? (legal, financial, personal, business, kids, insurance, resumes, etc.)
+- **File recency** — which files and folders were recently created or modified? Use `stat` to check created/modified dates. Recent activity reveals current priorities.
+- **File age patterns** — what's been untouched for months? What gets constant attention?
+- **Project files** — scan `~/sulla/projects/` for active projects. Read each `PROJECT.md` for goals and status.
+- **Workspace contents** — what code, documents, and assets exist in each workspace?
+- **Personal documents** — resumes reveal career trajectory, legal docs reveal life events, financial docs reveal money situation
+- **Business documents** — contracts, proposals, agreements reveal the business's actual operations
+- **Naming patterns** — how do they organize? Folder names reveal mental models and priorities
+
+**Tool guidance:** Use `exec` with `ls -la` and `stat` to check file dates. Use `file_search` to scan directories. Read document headers and summaries — don't read entire large files. For sensitive files (legal, financial), note their existence and recency without extracting private details.
+
+**Privacy rules:**
+- Note the existence and recency of sensitive documents, not their contents
+- Never extract or store specific financial figures from personal documents
+- Never store credential or authentication details found in files
+- Focus on patterns and categories, not private data
+
 ### Topic: Connected Integrations — Email
 
 If email integrations are connected (Gmail, Postmark, etc.), observe communication patterns.

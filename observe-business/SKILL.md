@@ -81,6 +81,45 @@ Focus on:
 - Workload distribution — is one person doing everything?
 - Resource constraints affecting growth
 
+### Topic: Blog and Content Presence
+
+Observe the business's published content and online presence.
+
+Focus on:
+- Blog posts — what topics are being published? How recent? What's the publishing cadence?
+- Content quality and depth — thin posts or substantial pieces?
+- SEO signals — what keywords are being targeted? Are posts ranking?
+- Content gaps — topics the business should cover but hasn't
+- Reader engagement signals — comments, shares, backlinks if observable
+- Content pipeline — what's in draft, what's published, what's stale?
+
+**Tool guidance:** Use browser tools to visit the business's blog/website. Use `file_search` to find any content drafts or blog-related project files in workspaces. Check for blog-production projects.
+
+### Topic: Social Media Presence
+
+Observe the business's social media activity and audience.
+
+Focus on:
+- Which platforms are active? (Twitter/X, LinkedIn, YouTube, Instagram, TikTok, etc.)
+- Posting frequency and consistency on each platform
+- Content themes — what are they talking about publicly?
+- Audience engagement — followers, likes, comments, shares, growth trends
+- Tone and brand voice — professional, casual, educational, promotional?
+- Social media strategy signals — is this organic, paid, or both?
+- Audience demographics and behavior if observable
+
+**Tool guidance:** Use browser tools to visit social profiles. Check for social media projects or assets in workspaces. If social media integrations are connected, use those APIs for detailed analytics.
+
+### Topic: Connected Integrations — All Available
+
+Before examining specific integration categories below, run `integration_list` and `list_integration_accounts` to discover ALL connected integrations. For each connected integration not covered by a specific topic below, spawn an observation to understand what the integration is used for, its current state, and what it reveals about the business.
+
+Focus on:
+- What integrations are connected and what do they tell us about the business's operations?
+- For each integration: current activity level, health, and what business function it serves
+- Cross-integration patterns — how do the business's tools work together?
+- Integration gaps — what tools SHOULD be connected based on the business's needs?
+
 ### Topic: Connected Integrations — Email Marketing
 
 If email marketing integrations are connected (Beehiiv, Customer.io, Drip, Mailgun, Postmark, Resend), observe campaign health.
