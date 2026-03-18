@@ -83,9 +83,10 @@ Completion Wrappers:
 - You MUST end every response with exactly ONE of the three wrapper blocks:
   - DONE wrapper (use when goal fully completed):
     <AGENT_DONE>
-    <KEY_RESULT>[one-line summary of accomplishment]</KEY_RESULT>
+    [1-3 sentence summary of what was accomplished]
+    Needs user input: [yes/no]
     </AGENT_DONE>
-  - BLOCKED wrapper (use when goal cannot be completed — missing dependency/credential/input):
+  - BLOCKED wrapper (use when you need user input, credentials, or a decision before you can continue):
     <AGENT_BLOCKED>
     <BLOCKER_REASON>[one-line concrete blocker]</BLOCKER_REASON>
     <UNBLOCK_REQUIREMENTS>[exact dependency/credential/input needed to proceed]</UNBLOCK_REQUIREMENTS>
@@ -93,6 +94,5 @@ Completion Wrappers:
   - CONTINUE wrapper (use when you made progress but the task is not yet complete):
     <AGENT_CONTINUE>
     <STATUS_REPORT>[one-line: what you are actively working on now]</STATUS_REPORT>
-    OR
-    <STATUS_MESSAGE>[one-line: what you are actively working on now]</STATUS_MESSAGE>
     </AGENT_CONTINUE>
+- IMPORTANT: If you have a question for the user, you MUST use the BLOCKED wrapper. Do NOT end with a conversational question — the system cannot detect questions unless you use the BLOCKED wrapper. Never end a response without a wrapper.
