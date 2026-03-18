@@ -88,15 +88,19 @@ Focus on:
 
 Observe the human's documents folder and project files to understand who they are, what they're working on, and what matters to them. This may require multiple agents to cover the full scope.
 
+Observe the human's personal documents folder to understand who they are, what's going on in their life, and what matters to them. This may require multiple agents to cover the full scope.
+
+**Important:** Only scan `~/Documents/` — this is the human's own files. Do NOT scan `~/sulla/projects/` as those are agent-created projects that reflect our decisions, not the human's.
+
 Focus on:
 - **Documents folder** (`~/Documents/`) — scan all top-level folders and files. What categories exist? (legal, financial, personal, business, kids, insurance, resumes, etc.)
 - **File recency** — which files and folders were recently created or modified? Use `stat` to check created/modified dates. Recent activity reveals current priorities.
 - **File age patterns** — what's been untouched for months? What gets constant attention?
-- **Project files** — scan `~/sulla/projects/` for active projects. Read each `PROJECT.md` for goals and status.
-- **Workspace contents** — what code, documents, and assets exist in each workspace?
 - **Personal documents** — resumes reveal career trajectory, legal docs reveal life events, financial docs reveal money situation
 - **Business documents** — contracts, proposals, agreements reveal the business's actual operations
+- **Family signals** — kids folders, family photos, school documents reveal family structure and priorities
 - **Naming patterns** — how do they organize? Folder names reveal mental models and priorities
+- **Desktop and Downloads** — check `~/Desktop/` and `~/Downloads/` for recent activity that reveals current focus
 
 **Tool guidance:** Use `exec` with `ls -la` and `stat` to check file dates. Use `file_search` to scan directories. Read document headers and summaries — don't read entire large files. For sensitive files (legal, financial), note their existence and recency without extracting private details.
 
@@ -105,6 +109,20 @@ Focus on:
 - Never extract or store specific financial figures from personal documents
 - Never store credential or authentication details found in files
 - Focus on patterns and categories, not private data
+
+### Topic: Location and Weather
+
+Observe the human's physical location and local conditions.
+
+Focus on:
+- **Determine location** — check system timezone (`date +%Z`), locale settings, and any location mentions from conversations or documents. If calendar events have locations, those are strong signals.
+- **Current weather** — use browser tools to check weather for the determined location. Current temperature, conditions, and forecast.
+- **Weather patterns** — is it a season that affects mood or behavior? (dark winters, extreme heat, storm season)
+- **Local events** — major events happening in their area that might affect their schedule or mood
+- **Cost of living signals** — if location is known, understand the economic context (expensive city vs. affordable area)
+- **Time zone** — what time zone are they in? This affects when they're likely available and their daily rhythm.
+
+**Tool guidance:** Use `exec` to check system timezone and locale. Use browser tools to look up weather and local conditions. Cross-reference with any location mentions from conversations or calendar events.
 
 ### Topic: Connected Integrations — Email
 
