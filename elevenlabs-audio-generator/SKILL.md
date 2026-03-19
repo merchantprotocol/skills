@@ -29,7 +29,7 @@ Generate music, sound effects, and voice clips using the ElevenLabs API.
 
 | Step | Tool | Notes |
 |------|------|-------|
-| Check ElevenLabs credentials | `integration_get_credentials` | `integrationId: "elevenlabs"` — need `api_key` |
+| Check ElevenLabs credentials | `integration_get_credentials` via Tools API | `integrationId: "elevenlabs"` — need `api_key` |
 | Create project PRD | `create_project` | Creates the project folder + PROJECT.md |
 | Create output directories | `fs_mkdir` | Create `~/sulla/projects/<project-name>/audio/music`, `audio/sfx`, `audio/voice` |
 | Generate music | `exec` | curl ElevenLabs music generation endpoint |
@@ -43,7 +43,8 @@ Generate music, sound effects, and voice clips using the ElevenLabs API.
 
 ### ElevenLabs Credentials
 ```
-integration_get_credentials({ integrationId: "elevenlabs" })
+Call `integration_get_credentials` via the Tools API at http://host.docker.internal:3000/v1/tools/list
+with parameters: { integrationId: "elevenlabs" }
 ```
 Extract the `api_key` value. If not configured, tell the user to set up the ElevenLabs integration first.
 
@@ -52,7 +53,7 @@ Extract the `api_key` value. If not configured, tell the user to set up the Elev
 ## Default Workflow
 
 ### 1. Check credentials
-Verify ElevenLabs API key is available via `integration_get_credentials`.
+Verify ElevenLabs API key is available by calling `integration_get_credentials` via the Tools API.
 
 ### 2. Create the project
 ```
