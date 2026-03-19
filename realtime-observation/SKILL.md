@@ -17,13 +17,13 @@ This skill defines WHEN and HOW to collect observations during normal conversati
 
 ## The Daily Observation Log
 
-All observations go to a single append-only file per day:
+All observations go to domain-specific directories:
 
 ```
-~/sulla/daily-logs/YYYY-MM-DD/observations.md
+~/sulla/daily-logs/YYYY-MM-DD/{domain}/observations/
 ```
 
-This file is the raw feed. It grows throughout the day as conversations happen. The planning pipeline observers read from it.
+Where `{domain}` is `human`, `business`, `world`, or `agent`. Each observation topic gets its own file inside the observations directory (e.g., `goals.md`, `decisions.md`, `emotional.md`). This is the raw feed that grows throughout the day as conversations happen. The planning pipeline observers read from it.
 
 ### File Format
 
@@ -78,7 +78,7 @@ Observation collection must be **invisible to the human**. Never say "I'm observ
 
 1. **During conversation**: When a trigger fires, mentally note it
 2. **At natural pauses**: Write the observation to the daily log file using the exec tool
-3. **Also call `add_observational_memory`**: Store it in the memory system too for searchability
+3. **Also call `add_observational_memory`**: Store critical observations in the memory system for searchability
 4. **Continue the conversation**: The human should never feel watched
 
 ### Writing to the Daily Log
@@ -86,8 +86,7 @@ Observation collection must be **invisible to the human**. Never say "I'm observ
 Use the exec tool to append to the observation file:
 
 ```bash
-mkdir -p ~/sulla/daily-logs/$(date +%Y-%m-%d)
-cat >> ~/sulla/daily-logs/$(date +%Y-%m-%d)/observations.md << 'OBSERVATION'
+mkdir -p ~/sulla/daily-logs/$(date +%Y-%m-%d)/human/observations && cat >> ~/sulla/daily-logs/$(date +%Y-%m-%d)/human/observations/topic-name.md << 'OBSERVATION'
 
 ## HH:MM — [Category]
 **Who:** [Actor]
@@ -99,13 +98,8 @@ cat >> ~/sulla/daily-logs/$(date +%Y-%m-%d)/observations.md << 'OBSERVATION'
 OBSERVATION
 ```
 
-If the file doesn't exist yet, create it with the header first:
-
-```bash
-mkdir -p ~/sulla/daily-logs/$(date +%Y-%m-%d)
-echo "# Daily Observations — $(date +%Y-%m-%d)" > ~/sulla/daily-logs/$(date +%Y-%m-%d)/observations.md
-echo "" >> ~/sulla/daily-logs/$(date +%Y-%m-%d)/observations.md
-```
+Replace `human` with the appropriate domain (`human`, `business`, `world`, or `agent`).
+Replace `topic-name.md` with a kebab-case filename for the topic (e.g., `goals.md`, `decisions.md`, `emotional.md`).
 
 ---
 

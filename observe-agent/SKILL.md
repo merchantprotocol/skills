@@ -11,7 +11,7 @@ author: sulla-desktop
 
 This skill defines the observation topics for the agent/self domain. Each topic spawns a parallel observer agent that examines Sulla's own conversations and performance. Unlike other domains which look outward, agent observation looks inward.
 
-**Before observing:** Read the human goal journal at `~/sulla/identity/human-journal.md` and business goal journal at `~/sulla/identity/business-journal.md` to understand what goals the agent should have been advancing. Also read the agent goal journal at `~/sulla/identity/agent-journal.md` for the agent's own improvement goals.
+**Before observing:** Read the human goals at `~/sulla/identity/human/goals.md` and business goals at `~/sulla/identity/business/goals.md` to understand what goals the agent should have been advancing. Also read the agent goals at `~/sulla/identity/agent/goals.md` for the agent's own improvement goals.
 
 Every observation must cite specific conversation moments. No self-congratulation. No vague assessments. What actually happened?
 
@@ -23,12 +23,12 @@ The agent observer MUST read actual past conversation data. This is the primary 
 
 **Sources to examine (in order of priority):**
 1. **Conversation thread history** — use the conversation/thread tools to read recent agent-human conversations
-2. **Daily observation logs** — `~/sulla/daily-logs/YYYY-MM-DD/observations.md` contains observations captured during conversations
+2. **Daily observation logs** — `~/sulla/daily-logs/YYYY-MM-DD/{domain}/observations/` contains observations captured during conversations
 3. **Agent channel logs** — check for any stored conversation logs in the agent's working directories
 4. **Tool transcripts** — examine what tools were called, what succeeded, what failed
 
 **How many conversations to analyze:**
-- **Initial run (no agent identity file exists at `~/sulla/identity/agent.md`):** This is the first time we're observing ourselves. Read ALL available past conversations — every single one. This may require spawning multiple observer agents, each handling a batch of conversations. Split by date range if needed (e.g., one agent per day of history). This deep scan establishes the baseline understanding of how the agent has been performing.
+- **Initial run (no agent identity file exists at `~/sulla/identity/agent/identity.md`):** This is the first time we're observing ourselves. Read ALL available past conversations — every single one. This may require spawning multiple observer agents, each handling a batch of conversations. Split by date range if needed (e.g., one agent per day of history). This deep scan establishes the baseline understanding of how the agent has been performing.
 - **Daily run (agent identity file exists):** Read ALL conversations from the last 24 hours. If fewer than 3, also include the previous day. Focus on what changed since the last observation.
 
 **What to extract from each conversation:**
