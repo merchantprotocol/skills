@@ -216,14 +216,32 @@ updated: [YYYY-MM-DD]
 [3-5 direct quotes that capture their voice, goals, or priorities — these help the thinker understand tone and intent]
 ```
 
+### Write Results to Identity and Goals Files
+
+In addition to the onboarding document, persist what you learned directly into the domain-namespaced files so the planning pipeline can use it immediately:
+
+| What you learned | Write to |
+|---|---|
+| Who they are, role, personality, preferences, working style | `~/sulla/identity/human/identity.md` |
+| Their confirmed goals (2-year vision, quarterly, weekly) | `~/sulla/identity/human/goals.md` |
+| Business identity, model, market position | `~/sulla/identity/business/identity.md` |
+| Business goals, revenue targets, financial markers | `~/sulla/identity/business/goals.md` |
+
+**Rules for writing these files:**
+- If a file already exists, update it — don't overwrite. Merge new information into existing sections.
+- Mark every claim as `(source: onboarding, YYYY-MM-DD)` so downstream agents know it came directly from the user.
+- Goals go into `goals.md` with the appropriate time horizon (daily, weekly, 13-week, 2-year).
+- Identity details (role, personality, working style, preferences) go into `identity.md`.
+- If the user didn't mention business details, leave the business files alone.
+
 ### What Happens Next
 
-The onboarding document feeds directly into the planning pipeline:
+The onboarding document plus the identity/goals files feed directly into the planning pipeline:
 
-1. **The observer** reads it as a high-quality primary source for the human domain
-2. **The thinker** uses it to populate the human identity file with confirmed (not inferred) information
-3. **The goal-setter** uses the confirmed goals to set accurate initial goals at every time horizon (daily → 2-year)
-4. **The prompt-engineer** uses it to calibrate initial influence level and conversation style
+1. **The observer** reads identity files as high-quality primary sources
+2. **The thinker** uses confirmed identity data (not inferred) to analyze observations
+3. **The goal-setter** uses confirmed goals to set accurate initial goals at every time horizon (daily → 2-year)
+4. **The prompt-engineer** uses identity and goals to calibrate influence level and conversation style
 
 Because the goals come directly from the user's mouth, they start as confirmed — not speculative. This gives the planning pipeline a much stronger foundation than waiting weeks of observation to infer goals.
 
