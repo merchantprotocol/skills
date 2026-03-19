@@ -1,14 +1,17 @@
 ---
 slug: discover-and-call-integrations
 title: "Integrations — Discover, List, and Call Enabled Services & MCP Servers"
-tags: [integrations, api, mcp, http, discovery, exec, enabled, available, connected, slack, github, gmail, tools, services]
-triggers: ["integration", "integrations", "check integrations", "what integrations", "available integrations", "enabled integrations", "connected integrations", "list integrations", "discover integrations", "call integration", "use integration", "integration api", "mcp tool", "mcp server", "mcp tools", "what's enabled", "what's available", "what's connected", "send slack", "send email", "github issue", "what can I connect to", "what services"]
+description: "REQUIRED for any task involving integrations, MCP servers, or external services. Provides the HTTP API endpoint and call pattern to discover what's enabled and execute integration/MCP tool calls. Load this skill BEFORE attempting to browse the filesystem or guess URLs."
+tags: [integrations, api, mcp, http, discovery, exec, enabled, available, connected, slack, github, gmail, tools, services, launchpad]
+triggers: ["integration", "integrations", "check integrations", "what integrations", "available integrations", "enabled integrations", "connected integrations", "list integrations", "discover integrations", "call integration", "use integration", "integration api", "mcp tool", "mcp server", "mcp tools", "what's enabled", "what's available", "what's connected", "send slack", "send email", "github issue", "what can I connect to", "what services", "connect to", "launchpad", "manage integration", "call mcp", "call tool", "ping mcp", "external service", "api call"]
 schemaversion: 1
 created_at: 2026-03-18T00:00:00.000Z
 updated_at: 2026-03-19T00:00:00.000Z
 ---
 
 # Integrations — Discover, List, and Call Enabled Services & MCP Servers
+
+> **CRITICAL**: Always use the HTTP API below to discover and call integrations. Do NOT browse the filesystem, guess URLs, or improvise. The API is the single source of truth.
 
 > **NEVER use `import requests`** — the `requests` module is not installed. Always use `curl` piped to `python3` with stdlib modules only (`json`, `sys`).
 
