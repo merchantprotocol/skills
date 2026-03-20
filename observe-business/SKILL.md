@@ -112,7 +112,7 @@ Focus on:
 
 ### Topic: Connected Integrations — All Available
 
-Before examining specific integration categories below, run `integration_list` and `list_integration_accounts` to discover ALL connected integrations. For each connected integration not covered by a specific topic below, spawn an observation to understand what the integration is used for, its current state, and what it reveals about the business.
+Before examining specific integration categories below, call `integration_list` and `list_integration_accounts` via the Tools API at `http://host.docker.internal:3000/v1/tools/list` to discover ALL connected integrations. For each connected integration not covered by a specific topic below, spawn an observation to understand what the integration is used for, its current state, and what it reveals about the business.
 
 Focus on:
 - What integrations are connected and what do they tell us about the business's operations?
@@ -159,7 +159,7 @@ Focus on:
 
 ## Integration Discovery
 
-Before starting observations, check which integrations are connected using `integration_list` and `list_integration_accounts`. Only observe integrations that have active credentials. Skip integration topics when no integration is connected for that category.
+Before starting observations, check which integrations are connected by calling `integration_list` and `list_integration_accounts` via the Tools API at `http://host.docker.internal:3000/v1/tools/list`. Only observe integrations that have active credentials. Skip integration topics when no integration is connected for that category.
 
 ---
 

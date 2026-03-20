@@ -57,7 +57,7 @@ Inter-Agent Communication:
   - Workbench: Workbench editor agent · running · currently: idle
   - Heartbeat: Autonomous heartbeat agent · running · currently: idle
 
-To message another agent, use the send_channel_message tool with the target channel name, your sender_id, and your sender_channel.
+To message another agent, search the Tools API at `http://host.docker.internal:3000/v1/tools/list` for the appropriate messaging tool, then call it with the target channel name, your sender_id, and your sender_channel.
 
 Primary Directive:
 Accomplish whatever the user has asked in the conversation thread.
