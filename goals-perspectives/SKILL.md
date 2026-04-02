@@ -110,43 +110,32 @@ Write the full plan for this time horizon structured around the cohesive goal, i
 
 ## Critic Prompts
 
-After synthesis produces a unified plan, the plan goes through sequential rounds of critique. Each round is a fresh agent that sees ONLY the current version of the plan plus one critique prompt. The plan is rewritten after each round.
+After synthesis produces a unified plan and writes it to the goals file, the plan goes through two sequential critics. Each critic reads the goals file, applies its methodology, rewrites the file, and saves it.
 
-### Critic Round 1: Weakness Audit
+### Critic 1: Timeline & Relevance Audit
 
-List the 3 biggest weaknesses in the plan you just received. Be specific and brutal — not "could be more detailed" but "this milestone is unmeasurable because [reason]" or "this daily habit conflicts with the observed energy pattern at [time]." Then rewrite the plan fixing those weaknesses.
+Validate every goal against current reality and defensible timelines:
 
-### Critic Round 2: Devil's Advocate
+1. **Information Freshness** — Cross-reference all facts and assumptions in the goals against the identity file. The identity file is the source of truth for what is current. Strip out anything that references outdated information.
+2. **Timeline Realism** — For every milestone and target, show the math. What needs to happen step by step? Is the ramp realistic given current resources, capacity, and momentum?
+3. **Source Vetting** — Every goal must trace back to concrete evidence in the identity file — a current strength, a real opportunity, existing momentum. Goals without grounding get cut or rewritten.
+4. **Timeline Sequencing** — Verify dependencies flow correctly. Later milestones cannot depend on outcomes not yet achieved. Daily/weekly must ladder to 13-week, which must connect to 2-year vision.
 
-Play devil's advocate against the plan. What would the strongest critic say? What assumptions is this plan making that could be dead wrong? Where is it optimistic without evidence? What external factors could derail it? Now revise the plan to address those criticisms.
+### Critic 2: Financial Reality Audit
 
-### Critic Round 3: Expert Panel
+Validate every financial goal and lifestyle aspiration against real-world costs:
 
-Imagine 3 domain experts reviewed this plan:
-- A behavioral psychologist (are the habit changes realistic given the identity's patterns?)
-- A strategic planner (is the goal decomposition sound? are milestones properly sequenced?)
-- Someone who knows this person well (does this plan match who they actually are, or who they wish they were?)
+1. **Extract Financial Picture** — From goals and identity files, extract stated income targets, lifestyle signals (housing, vehicles, children, travel, retirement, location), and current financial state.
+2. **Research Real Costs** — Web-search actual costs in the user's metro area: housing, property tax, state/local taxes, childcare, insurance, transportation, groceries, utilities. Fall back to conservative HCOL/MCOL/LCOL benchmarks when search data is unavailable, and flag every default used.
+3. **Build Monthly Budget Model** — Construct a cost table by category. Calculate required gross monthly income including tax burden.
+4. **Gap Analysis** — Compare required income to stated income targets:
+   - No gap: validate the revenue ramp can reach the target in time
+   - Small gap (<20%): adjust income target upward, note what drove the increase
+   - Serious gap (20-50%): present two paths — scale income up OR scale lifestyle down — choose the path that better matches identity signals
+   - Impossible gap (>50%): rewrite with a phased approach — what lifestyle is affordable at each revenue milestone
+5. **Rewrite Goals** — Annotate every income target with what lifestyle it supports. Add a Financial Reality section with the budget model. Do NOT remove aspirational goals — show what they actually cost so the user sees the real price of their desires.
 
-What would each expert push back on? What would they add? Now give a version that passes all 3 expert reviews.
-
-### Critic Round 4: Assumption Audit
-
-List every assumption baked into this plan. Flag which ones are weak or unverified. Specifically:
-- Assumptions about available time
-- Assumptions about energy and motivation
-- Assumptions about external factors remaining stable
-- Assumptions about skills the person may not have yet
-- Assumptions about other people's cooperation
-
-Now rewrite with those assumptions either defended with evidence from the identity file or removed entirely.
-
-### Critic Round 5: Quality Ratchet
-
-Rate this plan honestly on a scale of 1-10. What would a 10/10 version look like? What's missing? What's there that shouldn't be? What would make someone read this plan and think "this person is going to succeed"? Now write the 10/10 version.
-
-### Critic Round 6: Coherence Check
-
-Read the plan end to end. Find any internal contradictions, vague claims, unsupported assertions, or sections that don't connect to the cohesive goal. Mark them. Also check: does the daily/weekly level actually ladder up to the 13-week arc? Does the 13-week arc actually serve the 2-year vision? Eliminate every gap, then produce the final clean version.
+This critic applies the full lifestyle model when lifestyle signals are present (typically the human domain). For business/world/agent domains with no personal lifestyle signals, it validates only business financial projections against market data.
 
 ---
 
@@ -155,5 +144,5 @@ Read the plan end to end. Find any internal contradictions, vague claims, unsupp
 - The workflow orchestrator loads this skill at the start of a plan-cycle
 - Perspective agents each receive ONE lens section — they never see the other lenses
 - The synthesis agent receives ALL perspective outputs + the synthesis prompts
-- Critic agents work sequentially — each receives the output of the previous round
-- The number of lenses, synthesis steps, and critic rounds can be adjusted per time horizon by the parent workflow's orchestrator prompt
+- Critics run sequentially after synthesis writes the goals file — Timeline first, then Financial Reality
+- The number of lenses and synthesis steps can be adjusted per time horizon by the parent workflow's orchestrator prompt

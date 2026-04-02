@@ -165,7 +165,7 @@ Focus on:
 
 ## Integration Discovery
 
-Before starting observations, check which integrations are connected by calling `integration_list` and `list_integration_accounts` via the Tools API at `http://host.docker.internal:3000/v1/tools/list`. Only observe integrations that have active credentials. Skip integration topics when no integration is connected for that category.
+Before starting observations, check which integrations are connected by calling `integration_list` and `vault/list_accounts` via the Tools API at `http://host.docker.internal:3000/v1/tools/list`. Only observe integrations that have active credentials. Skip integration topics when no integration is connected for that category.
 
 ---
 
